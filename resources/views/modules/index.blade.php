@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    {{-- <h4><a id="link" href="{{Route('matchs.create')}}">Create Match</a></h4> --}}
+    <h4><a id="link" href="{{Route('modules.create')}}">Create Match</a></h4>
     <table class="table">
         <thead>
           <tr>
@@ -21,14 +21,14 @@
             @foreach($modules as $module)
                 <td>{{$module->idmodule}}</td>
                 <td>{{$module->nom}}</td>
-                {{-- <td>
-                    <form action="{{ route('matchs.destroy', $match->idmatch) }}" method="POST">
+                <td>
+                    <form action="{{ route('modules.destroy', $module->idmodule) }}" method="POST">
                     @csrf
                     @method('DELETE') 
                     <button type="submit" class="btn_d">Delete</button>&nbsp;&nbsp;
                     </form> 
-                    <a href="/matchs/{{$match->idmatch}}/edit"><button class="btn_u">Update</button></a>
-                </td> --}}
+                    <a href="/modules/{{$module->idmodule}}/edit"><button class="btn_u">Update</button></a>
+                </td>
             </tr>
             @endforeach
         </tbody>
