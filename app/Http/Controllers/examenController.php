@@ -11,7 +11,8 @@ class examenController extends Controller
      */
     public function index()
     {
-        //
+        $Examen = Examen::all();
+        return view('Examens.index', ['Examen'=>$Examen]);
     }
 
     /**
@@ -19,7 +20,7 @@ class examenController extends Controller
      */
     public function create()
     {
-        //
+        return view('Examens.create');
     }
 
     /**
@@ -27,7 +28,21 @@ class examenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = Validator::make($request->all(),
+        [
+            'date'=>'required',
+            'type'=>'required'
+        ],
+        [
+            'date.required'=>'date est obligatoire' ,
+       
+            'type.required'=>'type est obligatoire'
+        ]);
+        if($validation->fails()){
+            return back()->withErrors($validation->errors())->withInput();
+        }
+        Examen::create($request->post());
+        return redirect()->route('Examens.index');
     }
 
     /**
@@ -43,7 +58,8 @@ class examenController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $Examen = Examen::findorFail($id);
+        return view('Examens.edit', ['Examen'=>$Examen]);
     }
 
     /**
@@ -51,7 +67,28 @@ class examenController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validation=Validator::make($request->all(),
+        [
+            'date'=>'required',
+            'type'=>'required'
+        
+        ],
+        [
+            'date.required'=>'date est obligatoire' ,
+       
+            'type.required'=>'type est obligatoire'
+
+        ]
+        );
+        if($validation->fails()){
+            return back()->withErrors($validation->errors())->withInput();
+           }
+
+           $Examen=Examen::findorFail($id);
+           $Examen->date=$request->input('date');
+           $Examen->type=$request->input('type');
+           $Examen->save();
+           return redirect()->route('Examens.index')->with('message','la Examens est bien modifié');
     }
 
     /**
@@ -59,6 +96,8 @@ class examenController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $Examen = Examen::find($id);
+        $Examen->delete();
+        return redirect()->route('Examens.index');
     }
 }

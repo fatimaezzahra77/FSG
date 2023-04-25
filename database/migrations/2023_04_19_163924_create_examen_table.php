@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('examen', function (Blueprint $table) {
-            $table->id();
+            $table->id('idExamen');
+            $table->foreignId('idgroup');
+            $table->foreignId('idmodule');
+            $table->date('date');
+            $table->string('type');
+            $table->foreign('idgroup')->references('idgroup')->on('groupes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idmodule')->references('idmodule')->on('module')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
