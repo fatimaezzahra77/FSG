@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Note;
 use App\Models\groupes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,6 +16,9 @@ class stagiaires extends Model
 
     function group(){
         return $this->belongsTo(groupes::class, 'idgroup');
+    }
+    function note(){
+        return $this->belongsTo(Note::class, 'idnote');
     }
 }
 
