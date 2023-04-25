@@ -5,6 +5,10 @@ use App\Http\Controllers\moduleController;
 use App\Http\Controllers\groupesController;
 use App\Http\Controllers\filieresController;
 use App\Http\Controllers\stagiairesController;
+Route::get('prof/{prof}/edit', [ProfController::class, 'edit'])->name('prof.edit');
+Route::put('prof/{prof}', [ProfController::class, 'update'])->name('prof.update');
+Route::delete('prof/{prof}', [ProfController::class, 'destroy'])->name('prof.destroy');
+
 
 
 Route::get('stagiaires/groupes',[stagiairesController::class,'afficherFilterstagiaires'])->name('stagiaires.afficherFilterstagiaires');
