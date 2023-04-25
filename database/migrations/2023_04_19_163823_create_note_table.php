@@ -12,11 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('note', function (Blueprint $table) {
-            $table->id();
+            $table->id('idnote');
+            $table->foreignId('idExamen');
+            $table->foreignId('idstagiaire');
+            $table->float('valeur');
+            $table->foreign('idExamen')->references('idExamen')->on('examen')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idstagiaire')->references('idstagiaire')->on('stagiaires')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
