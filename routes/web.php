@@ -5,6 +5,7 @@ use App\Http\Controllers\moduleController;
 use App\Http\Controllers\groupesController;
 use App\Http\Controllers\filieresController;
 use App\Http\Controllers\stagiairesController;
+use App\Http\Controllers\examenController;
 Route::get('prof/{prof}/edit', [ProfController::class, 'edit'])->name('prof.edit');
 Route::put('prof/{prof}', [ProfController::class, 'update'])->name('prof.update');
 Route::delete('prof/{prof}', [ProfController::class, 'destroy'])->name('prof.destroy');
@@ -21,6 +22,7 @@ Route::resource('filieres', filieresController::class);
 Route::resource('groupes', groupesController::class);
 Route::resource('stagiaires', stagiairesController::class);
 Route::resource('modules', moduleController::class);
+Route::resource('Examens', examenController::class);
 Route::get('/', function () {
     return view('welcome');
 });
