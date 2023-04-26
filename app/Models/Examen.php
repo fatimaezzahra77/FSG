@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Examen extends Model
 {
     use HasFactory;
+    protected $table = 'examen';
     protected $primaryKey = 'idExamen';
     protected $fillable = ['date', 'type','idmodule','idgroup'];
     function group(){

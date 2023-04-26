@@ -85,9 +85,7 @@ class profController extends Controller
         $prof->password=$request->password;
         $prof->save();
         return redirect()->route('profes.index')->with('success', 'Le professeur a été modifié avec succès.');
-    }
-
-    /**
+    }    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Request $request, string $id)

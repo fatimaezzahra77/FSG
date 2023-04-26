@@ -23,7 +23,7 @@ Route::resource('filieres', filieresController::class);
 Route::resource('groupes', groupesController::class);
 Route::resource('stagiaires', stagiairesController::class);
 Route::resource('modules', moduleController::class);
-Route::resource('Examens', examenController::class);
+Route::resource('examens', examenController::class);
 Route::get('/', function () {
     return view('welcome');
 });
