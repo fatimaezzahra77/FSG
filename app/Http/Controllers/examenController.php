@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Examen;
+
+use App\Models\groupes;
+
+use App\Models\Module;
 use Illuminate\Http\Request;
+
+
 
 class examenController extends Controller
 {
@@ -20,7 +27,9 @@ class examenController extends Controller
      */
     public function create()
     {
-        return view('Examens.create');
+        $groupes=groupes::all();
+        $Module=Module::all();
+        return view('Examens.create',['groupes'=>$groupes,'Module'=>$Module]);
     }
 
     /**
@@ -41,7 +50,12 @@ class examenController extends Controller
         if($validation->fails()){
             return back()->withErrors($validation->errors())->withInput();
         }
-        Examen::create($request->post());
+        Examen::create([
+            'idgroup'=>$request->input('idgroup'),
+            'idmodule'=>$request->input('idmodule'),
+            'date'=>$request->input('date'),
+            'type'=>$request->input('type'),
+        ]);
         return redirect()->route('Examens.index');
     }
 
@@ -58,8 +72,10 @@ class examenController extends Controller
      */
     public function edit(string $id)
     {
+        $groupes=groupes::all();
+        $Module=Module::all();
         $Examen = Examen::findorFail($id);
-        return view('Examens.edit', ['Examen'=>$Examen]);
+        return view('Examens.edit', ['Examen'=>$Examen,'groupes'=>$groupes,'Module'=>$Module]);
     }
 
     /**
@@ -85,6 +101,8 @@ class examenController extends Controller
            }
 
            $Examen=Examen::findorFail($id);
+           $Examen->idgroup=$request->input('idgroup');
+           $Examen->idmodule=$request->input('idmodule');
            $Examen->date=$request->input('date');
            $Examen->type=$request->input('type');
            $Examen->save();
@@ -100,4 +118,5 @@ class examenController extends Controller
         $Examen->delete();
         return redirect()->route('Examens.index');
     }
+    
 }

@@ -4,30 +4,30 @@
 <div class="card">
   <div class="card-header"> Ajouter un Examens</div>
   <div class="card-body">
-  <form action="{{Route('matchs.store')}}" method="post">
+  <form action="{{Route('Examens.store')}}" method="post">
       @csrf
-      group:
+      groupe:
     <select name="idgroup"  class="form-select" aria-label="Default select example">
-        @foreach($equipes as $equipe)
-          <option value="{{$equipe->idEquipe}}">{{$equipe->nom}}</option>
+        @foreach($groupes as $groupe)
+          <option value="{{$groupe->idgroup}}">{{$groupe->nom}}</option>
         @endforeach
 </select><br/>
-Equipes2:
-    <select name="idequipe2"  class="form-select" aria-label="Default select example">
-        @foreach($equipes as $equipe)
-          <option value="{{$equipe->idEquipe}}">{{$equipe->nom}}</option>
+Module:
+    <select name="idmodule"  class="form-select" aria-label="Default select example">
+        @foreach($Module as $module)
+          <option value="{{$module->idmodule}}">{{$module->nom}}</option>
         @endforeach
 </select><br/>
-        <label>But 1:</label></br>
-        <input type="text" name="but1"  class="form-control"></br>
+        <label>Date:</label></br>
+        <input type="date" name="date"  class="form-control"></br>
       
 
-        <label>But 2:</label></br>
-        <input type="text" name="but2" class="form-control"></br>
+        <label>Type:</label></br>
+        <input type="text" name="type" class="form-control"></br>
       
 
         <input type="submit" value="creat" class="btn btn-success">
-        <a href="{{ url('/matchs') }}" class="btn btn-success btn-sm" title="Add New matchs">
+        <a href="{{ url('/Examens') }}" class="btn btn-success btn-sm" title="Add New Examens">
           <i class="fa fa-plus" aria-hidden="true"></i> views
             </a>
     </form>
