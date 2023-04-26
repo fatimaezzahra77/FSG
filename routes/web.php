@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\profController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\notesController;
+>>>>>>> 15fedf2d9c47e9f69769855337a8291266fcb603
 use App\Http\Controllers\examenController;
 use App\Http\Controllers\moduleController;
 use App\Http\Controllers\seanceController;
@@ -12,7 +16,10 @@ use App\Http\Controllers\groupesController;
 // Route::delete('prof/{prof}', [profController::class, 'destroy'])->name('prof.destroy');
 use App\Http\Controllers\filieresController;
 use App\Http\Controllers\stagiairesController;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 15fedf2d9c47e9f69769855337a8291266fcb603
 
 Route::get('stagiaires/groupes',[stagiairesController::class,'afficherFilterstagiaires'])->name('stagiaires.afficherFilterstagiaires');
 Route::get('stagiaires/filter', [stagiairesController::class, 'filterStagiaires'])->name('stagiaires.filterStagiaires');
@@ -26,7 +33,11 @@ Route::resource('stagiaires', stagiairesController::class);
 Route::resource('profes', profController::class);
 Route::resource('modules', moduleController::class);
 Route::resource('examens', examenController::class);
+<<<<<<< HEAD
 Route::resource('seances', seanceController::class);
+=======
+Route::resource('notes', notesController::class);
+>>>>>>> 15fedf2d9c47e9f69769855337a8291266fcb603
 Route::get('/', function () {
     return view('welcome');
 });

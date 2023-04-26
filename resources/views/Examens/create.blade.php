@@ -4,7 +4,7 @@
 <div class="card">
   <div class="card-header"> Ajouter un Examens</div>
   <div class="card-body">
-  <form action="{{Route('Examens.store')}}" method="post">
+  <form action="{{Route('examens.store')}}" method="post">
       @csrf
       groupe:
     <select name="idgroup"  class="form-select" aria-label="Default select example">
@@ -27,7 +27,7 @@ Module:
       
 
         <input type="submit" value="creat" class="btn btn-success">
-        <a href="{{ url('/Examens') }}" class="btn btn-success btn-sm" title="Add New Examens">
+        <a href="{{ url('/examens') }}" class="btn btn-success btn-sm" title="Add New Examens">
           <i class="fa fa-plus" aria-hidden="true"></i> views
             </a>
     </form>

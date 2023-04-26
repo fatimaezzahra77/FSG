@@ -12,7 +12,5 @@ class Module extends Model
     protected $primaryKey ="idmodule";
     protected $fillable=['nom'];
 
-    function examens(){
-        
-    }
+    
 }
