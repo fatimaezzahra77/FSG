@@ -1,12 +1,12 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
-@section('content')
+@section('content') --}}
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Ajouter un professeur</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('prof.store') }}" method="POST">
+            <form action="{{ route('profes.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="nom">Nom</label>
@@ -25,3 +25,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+                </div>
+        <input type="submit" value="Create">
+        <a href="{{ route('profes.index') }}" class="btn">Back</a>
+

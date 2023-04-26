@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\profController;
 use App\Http\Controllers\moduleController;
 use App\Http\Controllers\groupesController;
 use App\Http\Controllers\filieresController;
 use App\Http\Controllers\stagiairesController;
-Route::get('prof/{prof}/edit', [ProfController::class, 'edit'])->name('prof.edit');
-Route::put('prof/{prof}', [ProfController::class, 'update'])->name('prof.update');
-Route::delete('prof/{prof}', [ProfController::class, 'destroy'])->name('prof.destroy');
+// Route::get('prof/{prof}/edit', [profController::class, 'edit'])->name('prof.edit');
+// Route::put('prof/{prof}', [profController::class, 'update'])->name('prof.update');
+// Route::delete('prof/{prof}', [profController::class, 'destroy'])->name('prof.destroy');
 
-
-
+Route::resource('profes', profController::class);
 Route::get('stagiaires/groupes',[stagiairesController::class,'afficherFilterstagiaires'])->name('stagiaires.afficherFilterstagiaires');
 Route::get('stagiaires/filter', [stagiairesController::class, 'filterStagiaires'])->name('stagiaires.filterStagiaires');
 Route::get('groupes/filiere', [groupesController::class, 'displayFiliere'])->name('groupes.displayFiliere');

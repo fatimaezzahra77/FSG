@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use\App\Models;
-
+use App\Models\Prof;
 use Illuminate\Http\Request;
 
 class profController extends Controller
@@ -11,11 +10,11 @@ class profController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    { {
+    { 
         $prof = Prof::all();
 
         return view('prof.index', compact('prof'));
-    }
+    
     }
 
     /**
@@ -23,7 +22,8 @@ class profController extends Controller
      */
     public function create()
     {
-        return view('prof.create');
+        $prof = Prof::all();
+        return view('prof.create', ['prof'=>$prof]);
     }
 
     /**

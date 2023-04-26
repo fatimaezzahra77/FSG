@@ -1,11 +1,11 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
 
-@section('content')
+{{-- @section('content') --}}
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Liste des professeurs</h3>
             <div class="card-tools">
-                <a href="{{ route('prof.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Ajouter</a>
+                <a href="{{ route('profes.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Ajouter</a>
             </div>
         </div>
         <div class="card-body p-0">
@@ -38,4 +38,4 @@
             </table>
         </div>
     </div>
-@endsection
+{{-- @endsection --}}
