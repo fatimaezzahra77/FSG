@@ -25,8 +25,8 @@
                         <td>{{ $prof->prenom }}</td>
                         <td>{{ $prof->email }}</td>
                         <td>
-                            <a href="{{ route('prof.edit', $prof) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Modifier</a>
-                            <form action="{{ route('prof.destroy', $prof) }}" method="POST" style="display:inline-block">
+                            <a href="{{ route('profes.edit', $prof->idprof) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Modifier</a>
+                            <form action="{{ route('profes.destroy', $prof->idprof) }}" method="POST" style="display:inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce professeur ?')"><i class="fa fa-trash"></i> Supprimer</button>

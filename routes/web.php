@@ -6,18 +6,11 @@ use App\Http\Controllers\moduleController;
 use App\Http\Controllers\groupesController;
 use App\Http\Controllers\filieresController;
 use App\Http\Controllers\stagiairesController;
-<<<<<<< HEAD
+
 // Route::get('prof/{prof}/edit', [profController::class, 'edit'])->name('prof.edit');
 // Route::put('prof/{prof}', [profController::class, 'update'])->name('prof.update');
 // Route::delete('prof/{prof}', [profController::class, 'destroy'])->name('prof.destroy');
-=======
 use App\Http\Controllers\examenController;
-Route::get('prof/{prof}/edit', [ProfController::class, 'edit'])->name('prof.edit');
-Route::put('prof/{prof}', [ProfController::class, 'update'])->name('prof.update');
-Route::delete('prof/{prof}', [ProfController::class, 'destroy'])->name('prof.destroy');
-
-
->>>>>>> 9c139ed45b09744c83bcb32e398b6a63dfe531a5
 
 Route::resource('profes', profController::class);
 Route::get('stagiaires/groupes',[stagiairesController::class,'afficherFilterstagiaires'])->name('stagiaires.afficherFilterstagiaires');

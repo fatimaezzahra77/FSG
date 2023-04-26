@@ -22,30 +22,29 @@ class profController extends Controller
      */
     public function create()
     {
-        $prof = Prof::all();
-        return view('prof.create', ['prof'=>$prof]);
+        return view('prof.create');
     }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'nom' => 'required',
             'prenom' => 'required',
             'email' => 'required|email|unique:prof',
-            'password' => 'required|min:6',
+            'password'=>'required'
         ]);
     
         Prof::create([
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'nom' => $request->input('nom'),
+            'prenom' => $request->input('prenom'),
+            'email' => $request->input('email'),
+            'password'=>$request->input('password')
         ]);
-    
-        return redirect()->route('prof.index')->with('success', 'Le professeur a été créé avec succès.');
+
+        return redirect()->route('profes.index')->with('success', 'Le professeur a été créé avec succès.');
     }
     
 
@@ -65,38 +64,37 @@ class profController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function edit(Prof $prof)
+    public function edit(string $id)
     {
-        return view('prof.edit', compact('prof'));
+        $prof=Prof::findorFail($id);
+        return view('prof.edit', ['prof'=>$prof]);
     }
-     public function update(Request $request, Prof $prof)
+     public function update(Request $request, string $id)
     {
         $request->validate([
             'nom' => 'required',
             'prenom' => 'required',
-            'email' => 'required|email|unique:prof,email,'.$prof->id,
+            'email' => 'required|email|unique:prof,email',
             'password' => 'nullable|min:6',
         ]);
     
+        $prof=Prof::findorFail($id);
         $prof->nom = $request->nom;
         $prof->prenom = $request->prenom;
-        $prof->email = $request->email;
-        if (!empty($request->password)) {
-            $prof->password = bcrypt($request->password);
-        }
+        $prof->email=$request->email;
+        $prof->password=$request->password;
         $prof->save();
-    
-        return redirect()->route('prof.index')->with('success', 'Le professeur a été modifié avec succès.');
+        return redirect()->route('profes.index')->with('success', 'Le professeur a été modifié avec succès.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prof $prof)
+    public function destroy(Request $request, string $id)
     {
+        $prof=Prof::findorFail($id);
         $prof->delete();
-    
-        return redirect()->route('prof.index')->with('success', 'Le professeur a été supprimé avec succès.');
+        return redirect()->route('profes.index')->with('success', 'Le professeur a été supprimé avec succès.');
     }
     
 }
