@@ -11,8 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seance', function (Blueprint $table) {
-            $table->id();
+        Schema::create('Seance', function (Blueprint $table) {
+            $table->id('idseance');
+            $table->foreignId('idgroup');
+            $table->foreignId('idmodule');
+            $table->foreignId('idprof');
+            $table->date('nom');
+            $table->date('description');
+            $table->date('date');
+            $table->string('type');
+            $table->foreign('idgroup')->references('idgroup')->on('groupes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idmodule')->references('idmodule')->on('module')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
