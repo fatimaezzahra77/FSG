@@ -20,4 +20,7 @@ class groupes extends Model
     function filieres(){
         return $this->belongsTo(filieres::class, 'idfiliere');
     }
+    function seance(){
+        return $this->hasMany(Seance::class, 'idseance');
+    }
 }

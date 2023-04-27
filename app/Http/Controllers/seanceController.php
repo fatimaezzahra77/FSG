@@ -16,9 +16,9 @@ class seanceController extends Controller
      */
     public function index()
     {
-        $seance = Seance::all();
+        $seances = Seance::all();
 
-        return view('seances.index', ['seance'=>$seance]);
+        return view('seances.index', ['seances'=>$seances]);
     }
 
     /**

@@ -13,9 +13,9 @@ class Prof extends Model
     protected $primaryKey = 'idprof';
     protected $fillable = ['nom', 'prenom','email','password'];
 
-    // function seance(){
-    //     return $this->hasMany(Seance::class);
-    // } 
+    function seancee(){
+        return $this->hasMany(Seance::class);
+    } 
 
 }
 

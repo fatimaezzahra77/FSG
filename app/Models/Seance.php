@@ -11,12 +11,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Seance extends Model
 {
     use HasFactory;
-    protected $table = "seance";
+    protected $table = "seances";
     protected $primaryKey ="idseance";
-    protected $fillable=['nom','description','date','type','idgroup','idprof','idmodule'];
+    protected $fillable=['idgroup','idmodule', 'idprof	', 'nom', 'description', 'type	', 'date'];
     
     function module(){
-        return $this->belongsTo(Module::class,'idmodule');
+        return $this->hasMany(Module::class,'idmodule');
     }
     function groupes(){
         return $this->belongsTo(groupes::class, 'idgroup');

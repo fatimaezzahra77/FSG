@@ -29,18 +29,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($Seance as $Seance)
-                                <td>{{ $Seance->nom}}</td>
-                                <td>{{ $Seance->description}}</td>
-                                <td>{{ $Seance->date}}</td>
-                                <td>{{ $Seance->type}}</td>
+                                @foreach($seances as $seance)
+                                <td>{{ $seance->nom}}</td>
+                                <td>{{ $seance->description}}</td>
+                                <td>{{ $seance->date}}</td>
+                                <td>{{ $seance->type}}</td>
                                
                                 <td>
                                            
-                                <a href="{{Route('seances.edit',$Seance->idseance)}}" ><button class="btn btn-primary btn-sm">
+                                <a href="{{Route('seances.edit',$seance->idseance)}}" ><button class="btn btn-primary btn-sm">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                               
-                                 <form method="POST" action="{{Route('seances.destroy',$Seance->idseance)}}" accept-charset="UTF-8" style="display:inline">
+                                 <form method="POST" action="{{Route('seances.destroy',$seance->idseance)}}" accept-charset="UTF-8" style="display:inline">
                                  @method('delete')
                                  @csrf
                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete " onclick="return confirm(&quot;Confirm delete?&quot;)">
