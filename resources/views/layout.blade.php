@@ -26,23 +26,30 @@
       </li>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/stagiaires')}}">stagiaires</a>
+        <a class="nav-link" href="{{url('/stagiaires')}}">Stagiaires</a>
       </li>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/modules')}}">modules</a>
+        <a class="nav-link" href="{{url('/modules')}}">Modules</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/examens')}}">examens</a>
+        <a class="nav-link" href="{{url('/examens')}}">Examens</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/absences')}}">absences</a>
+        <a class="nav-link" href="{{url('/seances')}}">Seances</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/notes')}}">Notes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/absences')}}">Absences</a>
       </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       @guest
       <li class="nav-item">
         <a class="nav-link" href="{{route('login')}}">Login</a>
       </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="{{route('register')}}">Inscription</a>
       </li>

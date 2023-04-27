@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('absences', function (Blueprint $table) {
             $table->id('idAbsence');
             $table->foreignId('idseance');
-            $table->string('nbrHeur');
-            $table->foreign('idseance')->references('idseance')->on('seance')->onDelete('cascade')->onUpdate('cascade');
+            $table->float('nbrHeur');
+            $table->foreign('idseance')->references('idseance')->on('seances')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
