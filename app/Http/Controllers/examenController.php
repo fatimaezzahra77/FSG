@@ -5,10 +5,11 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\Examen;
 
-use App\Models\groupes;
-
 use App\Models\Module;
+
+use App\Models\groupes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -20,7 +21,7 @@ class examenController extends Controller
     public function index()
     {
         $Examen = Examen::all();
-        return view('Examens.index', ['Examen'=>$Examen]);
+        return view('examens.index', ['Examen'=>$Examen]);
     }
 
     /**
@@ -30,7 +31,7 @@ class examenController extends Controller
     {
         $groupes=groupes::all();
         $Module=Module::all();
-        return view('Examens.create',['groupes'=>$groupes,'Module'=>$Module]);
+        return view('examens.create',['groupes'=>$groupes,'Module'=>$Module]);
     }
 
     /**
@@ -76,7 +77,7 @@ class examenController extends Controller
         $groupes=groupes::all();
         $Module=Module::all();
         $Examen = Examen::findorFail($id);
-        return view('Examens.edit', ['Examen'=>$Examen,'groupes'=>$groupes,'Module'=>$Module]);
+        return view('examens.edit', ['Examen'=>$Examen,'groupes'=>$groupes,'Module'=>$Module]);
     }
 
     /**
@@ -107,7 +108,11 @@ class examenController extends Controller
            $Examen->date=$request->input('date');
            $Examen->type=$request->input('type');
            $Examen->save();
+<<<<<<< HEAD
            return redirect()->route('examens.index')->with('message','Examens est bien modifié');
+=======
+           return redirect()->route('examens.index')->with('message','la Examens est bien modifié');
+>>>>>>> 47925823a062bf66843463954fd69465accf6c9c
     }
 
     /**

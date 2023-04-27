@@ -12,7 +12,9 @@ class Module extends Model
     protected $primaryKey ="idmodule";
     protected $fillable=['nom'];
 
-    function examens(){
-        
+    function seances(){
+        return $this->belongsTo(Seance::class,'idseance');
     }
+
+    
 }
