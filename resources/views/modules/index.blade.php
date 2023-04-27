@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h4><a id="link" href="{{Route('modules.create')}}">Create Match</a></h4>
+    <h4><a id="link" href="{{Route('modules.create')}}">Create module</a></h4>
     <table class="table">
         <thead>
           <tr>

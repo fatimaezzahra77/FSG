@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Examen;
+use App\Models\Seance;
 use App\Models\filieres;
 use App\Models\stagiaires;
 use Illuminate\Database\Eloquent\Model;
@@ -21,6 +23,10 @@ class groupes extends Model
         return $this->belongsTo(filieres::class, 'idfiliere');
     }
     function seance(){
-        return $this->hasMany(Seance::class, 'idseance');
+        return $this->hasMany(Seance::class);
+    }
+
+    function examens(){
+        return $this->hasMany(Examen::class, 'idExamen');
     }
 }

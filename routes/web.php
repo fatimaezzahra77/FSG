@@ -28,6 +28,7 @@ Route::resource('modules', moduleController::class);
 Route::resource('examens', examenController::class);
 Route::resource('seances', seanceController::class);
 Route::resource('notes', notesController::class);
+Route::resource('exercices', exerciceController::class);
 Route::get('/', function () {
     return view('welcome');
 });

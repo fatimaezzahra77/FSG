@@ -7,7 +7,7 @@
 <form  action="{{Route('seances.store')}}" method="POST">
     @csrf
     groupe:
-    
+
     <select  name="idgroup" class="from-select"  aria-label="Default select example">
         @foreach($groupes as $groupe)
         <option value="{{$groupe->idgroup}}">{{$groupe->nom}}</option>
@@ -17,27 +17,27 @@
     module:
 
     <select  name="idmodule" class="from-select"  aria-label="Default select example">
-        @foreach($Module as $Module)
+        @foreach($Modules as $Module)
         <option value="{{$Module->idmodule}}">{{$Module->nom}}</option>
         @endforeach
     </select><br/>    
     prof:
 
     <select  name="idprof" class="from-select"  aria-label="Default select example">
-        @foreach($Prof as $Prof)
-        <option value="{{$Prof->Prof}}">{{$Prof->nom}}</option>
+        @foreach($Profes as $Prof)
+        <option value="{{$Prof->idprof}}">{{$Prof->nom}}</option>
         @endforeach
     </select><br/>
     <label>nom</label><br>
     <input type="text" name="nom" id="input" class="from-control" /><br>
     <label>type</label><br>
-    <input type="radio" name="radioB" id="radio" />Présentiel<br>
-    <input type="radio" name="radioB" id="radio" />distanceil<br>
+    <input type="radio" name="presentiel" id="radio" />Présentiel<br>
+    <input type="radio" name="distanceil" id="radio" />distanceil<br>
     <label>description</label><br>
     <textarea name="description" id="" cols="10" rows="2"></textarea>
     <label>date</label><br>
     <input type="Date" name="date" id="input" class="from-control"/><br>
-    <input type="submit" name="ajouter"  class="btn btn-success btn-sm" /><br>
+    <input type="submit" value="ajouter"  class="btn btn-success btn-sm" /><br>
 </from>
 </div>
 </div>

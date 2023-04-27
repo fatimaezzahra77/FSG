@@ -27,18 +27,17 @@ class notesController extends Controller
         return view('notes.create', ['examens'=>$examens, 'stagiaires'=>$stagiaires]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         Note::create([
             'idstagiaire'=>$request->input('idstagiaire'),
             'idExamen'=>$request->input('idExamen'),
             'valeur'=>$request->input('valeur')
-            ]);
-           return redirect()->route('notes.index')->with('message','le stagiaire est bien ajouté');
+        ]);
+           
+        return redirect()->route('notes.index')->with('message','le stagiaire est bien ajouté');
     }
+
     public function edit(string $id)
     {
         $note=Note::findorFail($id);
@@ -49,7 +48,6 @@ class notesController extends Controller
 
     public function update(Request $request, string $id)
     {
-
         $note = Note::findorFail($id);
         $note->idstagiaire =$request->input('idstagiaire');   
         $note->idExamen =$request->input('idExamen');   

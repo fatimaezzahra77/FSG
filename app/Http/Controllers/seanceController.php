@@ -27,9 +27,9 @@ class seanceController extends Controller
     public function create()
     {
         $groupes = groupes::all();
-        $Prof = Prof::all();
-        $Module=Module::all();
-        return view('seances.create',['groupes'=>$groupes,'Module'=>$Module,'Prof'=>$Prof]);
+        $Profes = Prof::all();
+        $Modules=Module::all();
+        return view('seances.create',['groupes'=>$groupes,'Modules'=>$Modules,'Profes'=>$Profes]);
     }
 
     /**
@@ -64,6 +64,7 @@ class seanceController extends Controller
             'date'=>$request->input('date'),
             'type'=>$request->input('type'),
         ]);
+        
         return redirect()->route('seances.index');
         
     }

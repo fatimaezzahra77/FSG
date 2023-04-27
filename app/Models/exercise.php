@@ -12,11 +12,10 @@ class exercise extends Model
     protected $table = 'exercise';
     protected $primaryKey = 'idexercise';
     protected $fillable = ['titre', 'contenue','solution','fait'];
+
     function Seance(){
         return $this->belongsTo(Seance::class, 'idseance');
     }
-  
- 
     
 }
 
