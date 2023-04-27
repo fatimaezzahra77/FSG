@@ -27,9 +27,15 @@ class seanceController extends Controller
     public function create()
     {
         $groupes = groupes::all();
+<<<<<<< HEAD
         $Profes = Prof::all();
         $Modules=Module::all();
         return view('seances.create',['groupes'=>$groupes,'Modules'=>$Modules,'Profes'=>$Profes]);
+=======
+        $profes = Prof::all();
+        $modules=Module::all();
+        return view('seances.create',['groupes'=>$groupes,'modules'=>$modules,'profes'=>$profes]);
+>>>>>>> 2ca3dd175d5ffe2a14e8346b1be7676309881405
     }
 
     /**
@@ -83,12 +89,11 @@ class seanceController extends Controller
     public function edit(string $id)
     {
         $groupes = groupes::all();
-        $Prof = Prof::all();
-        $Module=Module::all();
-        $seance = Seance::findorFail($id);
-        return view('seances.edit', ['seance'=>$seance,'groupes'=>$groupes,'Module'=>$Module,'Prof'=>$Prof]);
+        $profes = Prof::all();
+        $modules=Module::all();
+        $seances = Seance::findorFail($id);
+        return view('seances.edit', ['seances'=>$seances,'groupes'=>$groupes,'modules'=>$modules,'profes'=>$profes]);
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -111,15 +116,15 @@ class seanceController extends Controller
         if($validation->fails()){
             return back()->withErrors($validation->errors())->withInput();
         }
-        $Seance=Seance::findorFail($id);
-        $Seance->idgroup=$request->input('idgroup');
-        $Seance->idmodule=$request->input('idmodule');
-        $Seance->idprof=$request->input('idprof');
-        $Seance->nom=$request->input('nom');
-        $Seance->description=$request->input('description');
-        $Seance->date=$request->input('date');
-        $Seance->type=$request->input('type');
-        $Seance->save();
+        $Seances=Seance::findorFail($id);
+        $Seances->idgroup=$request->input('idgroup');
+        $Seances->idmodule=$request->input('idmodule');
+        $Seances->idprof=$request->input('idprof');
+        $Seances->nom=$request->input('nom');
+        $Seances->description=$request->input('description');
+        $Seances->date=$request->input('date');
+        $Seances->type=$request->input('type');
+        $Seances->save();
         return redirect()->route('seances.index')->with('message','seance bbien modifier');
     }
     
@@ -127,8 +132,8 @@ class seanceController extends Controller
    
     public function destroy(string $id)
     {
-        $Seance= Seance::find($id);
-        $Seance->delete();
+        $Seances= Seance::find($id);
+        $Seances->delete();
         return redirect()->route('seances.index');
         
     }
