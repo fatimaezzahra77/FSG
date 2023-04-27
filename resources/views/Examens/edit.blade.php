@@ -5,7 +5,7 @@
   <div class="card-header">modifier Examens</div>
   <div class="card-body">
       
-      <form action="{{ Route('Examens.update' ,$Examen->idExamen) }}" method="post">
+      <form action="{{ Route('examens.update' ,$Examen->idExamen) }}" method="post">
       @csrf
       @method('PUT')
         groupe:
@@ -26,7 +26,7 @@
           Type:<input type="text" name="type" value="{{$Examen->type}}"  class="form-control"><br><br>
     
         <input type="submit" value="Update" class="btn btn-success"></br><br>
-        <a href="{{ route('Examens.index') }}" class="btn">Back</a>
+        <a href="{{ route('examens.index') }}" class="btn">Back</a>
     </form>
  
   

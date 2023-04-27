@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\Examen;
 
@@ -56,7 +57,7 @@ class examenController extends Controller
             'date'=>$request->input('date'),
             'type'=>$request->input('type'),
         ]);
-        return redirect()->route('Examens.index');
+        return redirect()->route('examens.index');
     }
 
     /**
@@ -106,7 +107,7 @@ class examenController extends Controller
            $Examen->date=$request->input('date');
            $Examen->type=$request->input('type');
            $Examen->save();
-           return redirect()->route('Examens.index')->with('message','la Examens est bien modifié');
+           return redirect()->route('examens.index')->with('message','Examens est bien modifié');
     }
 
     /**
@@ -116,7 +117,7 @@ class examenController extends Controller
     {
         $Examen = Examen::find($id);
         $Examen->delete();
-        return redirect()->route('Examens.index');
+        return redirect()->route('examens.index');
     }
     
 }
