@@ -15,7 +15,7 @@ class Note extends Model
     protected $fillable=['idExamen', 'idstagiaire', 'valeur'];
 
     function stagiaire(){
-        return $this->belongsTo(stagiaires::class);
+        return $this->belongsTo(stagiaires::class, 'idstagiaire');
     }
     function examen(){
         return $this->belongsTo(Examen::class, 'idExamen');

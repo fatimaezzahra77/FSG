@@ -9,7 +9,7 @@
                         <h2>les infos des Examens</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/Examens/create') }}" class="btn btn-success btn-sm" title="Add New Examens">
+                        <a href="{{ url('/examens/create') }}" class="btn btn-success btn-sm" title="Add New Examens">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
                         <br/>
@@ -18,7 +18,6 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        
                                     <th>groupe</th>
                                     <th>Module</th>
                                     <th>Date</th>
@@ -35,10 +34,10 @@
                                
                                 <td>
                                            
-                                <a href="{{Route('Examens.edit',$Examen->idExamen)}}" ><button class="btn btn-primary btn-sm">
+                                <a href="{{Route('examens.edit',$Examen->idExamen)}}" ><button class="btn btn-primary btn-sm">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                               
-                                 <form method="POST" action="{{Route('Examens.destroy',$Examen->idExamen)}}" accept-charset="UTF-8" style="display:inline">
+                                 <form method="POST" action="{{Route('examens.destroy',$Examen->idExamen)}}" accept-charset="UTF-8" style="display:inline">
                                  @method('delete')
                                  @csrf
                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete " onclick="return confirm(&quot;Confirm delete?&quot;)">
