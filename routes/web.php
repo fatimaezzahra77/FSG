@@ -18,6 +18,7 @@ Auth::routes();
 // Route::delete('prof/{prof}', [profController::class, 'destroy'])->name('prof.destroy');
 use App\Http\Controllers\filieresController;
 use App\Http\Controllers\stagiairesController;
+use App\Http\Controllers\exerciseController;
 
 
 Route::get('stagiaires/groupes',[stagiairesController::class,'afficherFilterstagiaires'])->name('stagiaires.afficherFilterstagiaires');
@@ -32,11 +33,12 @@ Route::resource('stagiaires', stagiairesController::class);
 Route::resource('modules', moduleController::class);
 Route::resource('examens', examenController::class)->middleware('auth');;
 Route::resource('absences', AbsenceController::class);
-Route::resource('profes', profController::class);
-Route::resource('examens', examenController::class);
+Route::resource('exercises', exerciseController::class);
+
+Route::resource('seances', seanceController::class);
 Route::resource('seances', seanceController::class);
 Route::resource('notes', notesController::class);
-Route::resource('exercices', exerciceController::class);
+
 Route::get('/', function () {
     return view('welcome');
 });

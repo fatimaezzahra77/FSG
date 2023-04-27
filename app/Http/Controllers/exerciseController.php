@@ -1,7 +1,10 @@
 <?php
+namespace App\Http\Controllers;
 use App\Models\Exercise;
 
-class ExerciseController extends Controller
+use Illuminate\Support\Facades\Validator;
+
+class exerciseController extends Controller
 {
     public function index()
     {
