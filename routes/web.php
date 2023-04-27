@@ -8,6 +8,10 @@ use App\Http\Controllers\AbsenceController;
 use App\Http\Controllers\notesController;
 use App\Http\Controllers\seanceController;
 use App\Http\Controllers\groupesController;
+use Illuminate\Support\Facades\Auth;
+
+Auth::routes();
+
 
 // Route::get('prof/{prof}/edit', [profController::class, 'edit'])->name('prof.edit');
 // Route::put('prof/{prof}', [profController::class, 'update'])->name('prof.update');

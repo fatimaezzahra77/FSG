@@ -27,15 +27,9 @@ class seanceController extends Controller
     public function create()
     {
         $groupes = groupes::all();
-<<<<<<< HEAD
         $Profes = Prof::all();
         $Modules=Module::all();
         return view('seances.create',['groupes'=>$groupes,'Modules'=>$Modules,'Profes'=>$Profes]);
-=======
-        $profes = Prof::all();
-        $modules=Module::all();
-        return view('seances.create',['groupes'=>$groupes,'modules'=>$modules,'profes'=>$profes]);
->>>>>>> 2ca3dd175d5ffe2a14e8346b1be7676309881405
     }
 
     /**

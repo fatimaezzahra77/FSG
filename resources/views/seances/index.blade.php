@@ -30,6 +30,9 @@
                                 </thead>
                                 <tbody>
                                 @foreach($seances as $seance)
+                                <td>{{$seance->prof->nom}}</td>
+                                <td>{{$seance->groupes->nom}}</td>
+                                <td>{{$seance->module->nom}}</td>
                                 <td>{{ $seance->nom}}</td>
                                 <td>{{ $seance->description}}</td>
                                 <td>{{ $seance->date}}</td>

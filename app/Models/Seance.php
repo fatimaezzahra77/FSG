@@ -14,7 +14,7 @@ class Seance extends Model
     protected $table = "seances";
     protected $primaryKey ="idseance";
     protected $enums = ['type' => ['presentiel', 'distanceil']];
-    protected $fillable=['idgroup','idmodule', 'idprof	', 'nom', 'description', 'type	', 'date'];
+    protected $fillable=['idgroup','idmodule', 'idprof', 'nom', 'description', 'type', 'date'];
     
     function module(){
         return $this->belongsTo(Module::class,'idmodule');
