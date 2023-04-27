@@ -27,8 +27,8 @@
                                 </thead>
                                 <tbody>
                                 @foreach($Examen as $Examen)
-                                <td>{{$Examen->nom}}</td>
-                                <td>{{$Examen->nom}}</td>
+                                <td>{{$Examen->group->nom}}</td>
+                                <td>{{$Examen->Module->nom}}</td>
                                 <td>{{$Examen->date}}</td>
                                 <td>{{$Examen->type}}</td>
                                

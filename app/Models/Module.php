@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Examen;
 use App\Models\Seance;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,4 +18,7 @@ class Module extends Model
         return $this->belongsTo(Seance::class,'idseance');
     }
     
+    function examen(){
+        return $this->hasMany(Examen::class, 'idExamen');
+    }
 }

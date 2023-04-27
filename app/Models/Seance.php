@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Prof;
 use App\Models\Module;
+use App\Models\Seance;
 use App\Models\groupes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,5 +25,9 @@ class Seance extends Model
     }
     function prof(){
         return $this->belongsTo(Prof::class, 'idprof');
+    }
+    function absence(){
+        return $this->hasMany(Seance::class, 'idseance');
+
     }
 }

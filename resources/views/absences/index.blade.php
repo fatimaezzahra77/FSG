@@ -27,7 +27,7 @@
                                 <tbody>
                                 @foreach($Absence as $Absence)
                                 <td>{{$Absence->idAbsence}}</td>
-                                <td>{{$Absence->nom}}</td>
+                                <td>{{$Absence->Seance->nom}}</td>
                                 <td>{{$Absence->nbrHeur}}</td>
                                
                                 <td>
