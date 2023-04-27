@@ -21,6 +21,6 @@ class Examen extends Model
         return $this->belongsTo(Module::class, 'idmodule');
     }
     function Note(){
-        return $this->hasOne(Note::class, 'idnote');
+        return $this->belongsTo(Note::class, 'idnote');
     }   
 }

@@ -24,14 +24,14 @@
             <td>{{$note->stagiaire->nom}}</td>
             <td>{{$note->examen->date}}</td>
             <td>{{$note->valeur}}</td>
-            {{-- <td class="container-button">  
-                <form action="{{ route('groupes.destroy', $group->idgroup) }}" method="POST">
+            <td class="container-button">  
+                <form action="{{ route('notes.destroy', $note->idnote) }}" method="POST">
                 @csrf
                 @method('DELETE') 
                 <button type="submit" class="btn_d">Delete</button>&nbsp;&nbsp;
                 </form> 
-                <a href="/groupes/{{$group->idgroup}}/edit"><button class="btn_u" >Update</button></a></td></td>
-            </td> --}}
+                <a href="/notes/{{$note->idnote}}/edit"><button class="btn_u" >Update</button></a></td></td>
+            </td>
         </tr>
         @endforeach
     </tbody>
