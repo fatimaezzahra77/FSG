@@ -1,37 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h4><a id="link" href="{{Route('modules.create')}}">Create module</a></h4>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Id module</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-            @foreach($modules as $module)
-                <td>{{$module->idmodule}}</td>
-                <td>{{$module->nom}}</td>
-                <td>
-                    <form action="{{ route('modules.destroy', $module->idmodule) }}" method="POST">
-                    @csrf
-                    @method('DELETE') 
-                    <button type="submit" class="btn_d">Delete</button>&nbsp;&nbsp;
-                    </form> 
-                    <a href="/modules/{{$module->idmodule}}/edit"><button class="btn_u">Update</button></a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-      </table>
-</body>
-</html>
+
+@extends('layout')
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>les infos des modules</h2>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ url('/modules/create') }}" class="btn btn-success btn-sm" title="Add New modules">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        </a>
+                        <br/>
+                        <br/>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th >Id module</th>
+                                    <th >Nom</th>
+                                    <th >Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($modules as $module)
+                                <td>{{$module->idmodule}}</td>
+                                <td>{{$module->nom}}</td>
+                                <td>
+                                           
+                                <a href="{{Route('modules.edit',$module->idmodule)}}" ><button class="btn btn-primary btn-sm">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                              
+                                 <form method="POST" action="{{Route('modules.destroy',$module->idmodule)}}" accept-charset="UTF-8" style="display:inline">
+                                 @method('delete')
+                                 @csrf
+                                <button type="submit" class="btn btn-danger btn-sm" title="Delete " onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                 <i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                         </form>
+                                </td>
+
+                                </tr>
+                                
+                       @endforeach
+                                
+          </tbody>
+    @if(session('message'))
+     <span>{{session('message')}}</span>
+     @endif<br>
+                              
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

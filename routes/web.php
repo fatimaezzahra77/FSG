@@ -36,7 +36,7 @@ Route::resource('absences', AbsenceController::class);
 Route::resource('exercises', exerciseController::class);
 
 Route::resource('seances', seanceController::class);
-Route::resource('seances', seanceController::class);
+Route::resource('profes', profController::class);
 Route::resource('notes', notesController::class);
 
 Route::get('/', function () {
