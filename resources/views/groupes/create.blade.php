@@ -1,34 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{{ asset('style.css') }}">
-  <title>Document</title>
-</head>
-<body>
-<h2>Inserer un group :</h2><br>
-<div id="div">
-<form action="{{Route('groupes.store')}}" method="POST">
-    @csrf 
-    filieres:
-    <select name="idfiliere" >
+
+@extends('layout')
+@section('content')
+<div class="card">
+  <div class="card-header"> Ajouter un groupe</div>
+  <div class="card-body">
+  <form action="{{Route('groupes.store')}}" method="post">
+      @csrf
+      groupe:
+    <select name="idfiliere"  class="form-select" aria-label="Default select example">
         @foreach($filieres as $filiere)
-          <option style="height: 20px;" value="{{$filiere->idfiliere}}">{{$filiere->libelle}}</option>
+          <option value="{{$filiere->idfiliere}}">{{$filiere->libelle}}</option>
         @endforeach
-    </select><br/><br/>
-    Nom: <input type="text" name="nom" id="input"  placeholder="inserer votre nom"/><br/><br/>
+</select><br/>
+
+   Nom: <input type="text" name="nom" id="input"  placeholder="inserer votre nom"  class="form-control"/><br/><br/>
     @error('nom')
     <span style="color: red;">{{'*'.$message}}</span><br><br>
     @enderror
-    <input type="submit" value="Submit"><br/>
-</form>
-</div>
-<a href="{{ route('groupes.index') }}" class="btn">Back</a>
 
-@if(session('message'))
+        <input type="submit" value="creat" class="btn btn-success">
+        <a href="{{ url('/groupes') }}" class="btn btn-success btn-sm" title="Add New groupes">
+          <i class="fa fa-plus" aria-hidden="true"></i> Back
+            </a>
+    </form>
+    @if(session('message'))
   <span>{{session('message')}}</span>
 @endif
-</body>
-</html>
+ 
+  </div>
+</div>
+@stop

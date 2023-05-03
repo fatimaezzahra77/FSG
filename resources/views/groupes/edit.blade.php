@@ -1,26 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{{ asset('style.css') }}">
-  <title>Document</title>
-</head>
-<body>
 
-<form action="{{route('groupes.update', $groupes->idgroup)}}" method="POST">
-    @csrf 
-    @method('PUT')
-    <h3>Modifier le groupe:</h3>
-    Choisissez le filiere:<select style="margin-left: 15px" name="idfiliere">
-        @foreach($filieres as $filiere)
-          <option value="{{$filiere->idfiliere}}">{{$filiere->libelle}}</option>
-        @endforeach
-    </select><br/><br/>
-    Nom du group:<input style="margin-left: 41px" type="text" name="nom" id="input" value="{{$groupes->nom}}"/><br/><br/>
-    <input type="submit" value="Modifier" style="margin-left: 130px"/><br/>
-  <a style="margin-left: 6px"href="{{ route('groupes.index') }}" class="btn">Back</a>   
-</form>
-</body>
-</html>
+@extends('layout')
+@section('content')
+<div class="card">
+  <div class="card-header">modifier groupes</div>
+  <div class="card-body">
+      
+      <form action="{{ Route('groupes.update' ,$groupes->idgroup) }}" method="post">
+      @csrf
+      @method('PUT')
+      filiere:
+        <select name="idfiliere"  class="form-select" aria-label="Default select example>
+            @foreach ($filieres as $filiere)
+                <option value="{{$filiere->idfiliere}}">{{$filiere->libelle}}</option>
+            @endforeach
+        </select><br><br>
+  
+        Module:
+        <select name="idmodule"   class="form-select" aria-label="Default select example>
+            @foreach ($Module as $module)
+                <option value="{{$module->idmodule}}">{{$module->nom}}</option>
+            @endforeach
+        </select><br><br>
+      
+        Nom :<input style="margin-left: 41px" type="text" name="nom" id="input" value="{{$groupes->nom}}" class="form-control"/><br/><br/>
+       
+    
+        <input type="submit" value="Update" class="btn btn-success"></br><br>
+        <a href="{{ route('groupes.index') }}" class="btn">Back</a>
+    </form>
+ 
+  
+  </div>
+</div>
+@stop

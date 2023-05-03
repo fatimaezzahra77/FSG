@@ -1,39 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-    <title>Document</title>
-</head>
-<body>
-    <div id="div">
-    <form action="{{Route('notes.store')}}" method="POST">
-        @csrf 
-        Nom du stagiaire:
-        <select name="idstagiaire">
-          @foreach($stagiaires as $stagiaire)
-              <option value="{{$stagiaire->idstagiaire}}">{{$stagiaire->nom}}</option>
-          @endforeach
-      </select><br/>
-      Date d'examen:
-      <select name="idExamen">
-        @foreach($examens as $examen)
-            <option value="{{$examen->idExamen}}">{{$examen->date}}</option>
+
+@extends('layout')
+@section('content')
+<div class="card">
+  <div class="card-header"> Add un notes</div>
+  <div class="card-body">
+  <form action="{{Route('notes.store')}}" method="post">
+      @csrf
+      nom du stagiaire:
+    <select name="idstagiaire"  class="form-select" aria-label="Default select example">
+        @foreach($stagiaires as $stagiaire)
+          <option value="{{$stagiaire->idstagiaire}}">{{$stagiaire->nom}}</option>
         @endforeach
-    </select><br/>
-        Valeur: <input style="margin-left: 62px" type="text" name="valeur" id="input" placeholder="inserer votre nom"><br/><br/>
+</select><br/>
+  Date d'examen::
+    <select name="idExamen"  class="form-select" aria-label="Default select example">
+        @foreach($examens as $examen)
+          <option value="{{$examen->idExamen}}">{{$examen->date}}</option>
+        @endforeach
+</select><br/>
+    Valeur: <input style="margin-left: 62px" type="text" name="valeur" id="input" placeholder="inserer votre nom" class="form-control"><br/><br/>
         @error('nom')
         <span style="color: red;">{{'*'.$message}}</span><br><br>
         @enderror
-        <input type="submit" value="Ajouter" style="margin-left: 98px"><br/>
-    </form>
-</div>
-<a href="{{ route('notes.index') }}" class="btn">Back</a>
+   
 
-@if(session('message'))
-  <span>{{session('message')}}</span>
-@endif
-</body>
-</html>
+        <input type="submit" value="creat" class="btn btn-success">
+        <a href="{{ url('/notes') }}" class="btn btn-success btn-sm" title="Add New notes">
+          <i class="fa fa-plus" aria-hidden="true"></i> views
+            </a>
+    </form>
+ 
+  </div>
+</div>
+@stop

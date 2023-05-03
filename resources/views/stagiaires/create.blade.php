@@ -1,37 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-    <title>Document</title>
-</head>
-<body>
-    <div id="div">
-    <form action="{{Route('stagiaires.store')}}" method="POST">
-        @csrf 
-        Nom du group:
-        <select name="idgroup">
-          @foreach($groupes as $group)
-              <option value="{{$group->idgroup}}">{{$group->nom}}</option>
-          @endforeach
-      </select><br/>
-        Nom: <input style="margin-left: 62px" type="text" name="nom" id="input" placeholder="inserer votre nom"><br/><br/>
+
+@extends('layout')
+@section('content')
+<div class="card">
+  <div class="card-header"> Ajouter un stagiaires</div>
+  <div class="card-body">
+  <form action="{{Route('stagiaires.store')}}" method="post">
+      @csrf
+      Nom du group:
+    <select name="idgroup"  class="form-select" aria-label="Default select example">
+        @foreach($groupes as $groupe)
+          <option value="{{$groupe->idgroup}}">{{$groupe->nom}}</option>
+        @endforeach
+</select><br/>
+      Nom: <input  type="text" name="nom" id="input" placeholder="inserer votre nom" class="form-control"/><br/><br/>
         @error('nom')
         <span style="color: red;">{{'*'.$message}}</span><br><br>
         @enderror
-        Prenom: <input style="margin-left: 46px" type="text" name="prenom" id="input" placeholder="inserer votre prenom"/><br/><br/>
+        Prenom: <input type="text" name="prenom" id="input" placeholder="inserer votre prenom" class="form-control"/><br/><br/>
         @error('prenom')
         <span style="color: red;">{{'*'.$message}}</span><br><br>
         @enderror
-        <input type="submit" value="Ajouter" style="margin-left: 98px"><br/>
+        <input type="submit" value="creat" class="btn btn-success">
+        <a href="{{ url('/stagiaires') }}" class="btn btn-success btn-sm" title="Add New stagiaires">
+          <i class="fa fa-plus" aria-hidden="true"></i> views
+            </a>
     </form>
+ 
+  </div>
 </div>
-<a href="{{ route('stagiaires.index') }}" class="btn">Back</a>
-
-@if(session('message'))
-  <span>{{session('message')}}</span>
-@endif
-</body>
-</html>
+@stop
+      
