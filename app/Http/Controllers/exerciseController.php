@@ -1,61 +1,78 @@
 <?php
 namespace App\Http\Controllers;
-use App\Models\Exercise;
-
+use Illuminate\Http\Request;
+use App\Models\Seance;
+use App\Models\exercise;
 use Illuminate\Support\Facades\Validator;
 
 class exerciseController extends Controller
 {
     public function index()
     {
-        $exercises = Exercise::all();
-        return view('exercises.index', compact('exercises'));
+        $exercises = exercise::all();
+        return view('exercise.index', compact('exercises'));
     }
 
     public function create()
     {
-        return view('exercises.create');
+        $seances = Seance::all();
+        return view('exercise.create', ['seances'=>$seances]);
     }
 
     public function store(Request $request)
     {
-        $exercise = new Exercise;
-        $exercise->titre = $request->input('titre');
-        $exercise->contenu = $request->input('contenu');
-        $exercise->solution = $request->input('solution');
-        $exercise->fait = $request->has('fait');
-        $exercise->seance_id = $request->input('seance_id');
-        $exercise->save();
-
+        $idseance=$request->input('idseance');
+        $titre=$request->input('titre');
+        $contenu=$request->input('contenu');
+        $solution=$request->input('solution');
+        // $fait= $request->has('fait');
+        $validation = Validator::make($request->all(),
+        [
+            'idseance'=>'required|max:25',
+            'titre'=>'required|max:25',
+            'contenu'=>'required|max:25',
+            'solution'=>'required|max:25',
+            'fait' => 'nullable|boolean'
+        ],
+        [
+            'idseance.required'=>'infos sont obligatoire',
+            'titre.required'=>'libelle est obligatoire' ,
+            'contenu.required'=>'libelle est obligatoire' ,
+            'solution.required'=>'libelle est obligatoire' ,
+            'fait.boolean' => 'fait doit être un booléen',
+            'fait.nullable'=>'fait peut etre nullable'
+        ]);
+        if($validation->fails()){
+            return back()->withErrors($validation->errors())->withInput();
+        }
+        exercise::create($request->post());
+        // dd(exercise::all());
         return redirect()->route('exercises.index');
     }
 
-    public function show(Exercise $exercise)
+    public function edit(string $id)
     {
-        return view('exercises.show', compact('exercise'));
+        $seances = Seance::all();
+        $exercises = exercise::findorFail($id);
+        return view('exercise.edite', ['seances'=>$seances, 'exercises'=>$exercises]);
     }
 
-    public function edit(Exercise $exercise)
+    public function update(Request $request, string $id)
     {
-        return view('exercises.edit', compact('exercise'));
-    }
-
-    public function update(Request $request, Exercise $exercise)
-    {
+        $exercise = exercise::findorFail($id);
+        $exercise->idseance = $request->input('idseance');
         $exercise->titre = $request->input('titre');
         $exercise->contenu = $request->input('contenu');
         $exercise->solution = $request->input('solution');
         $exercise->fait = $request->has('fait');
-        $exercise->seance_id = $request->input('seance_id');
         $exercise->save();
-
-        return redirect()->route('exercises.show', $exercise);
+        return redirect()->route('exercises.index', ['exercise'=>$exercise]);
     }
 
     public function destroy(Exercise $exercise)
     {
         $exercise->delete();
-
-        return redirect()->route('exercises.index');
+        return redirect()->route('exercises.index', ['exercise'=>$exercise]);
     }
 }
+

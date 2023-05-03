@@ -36,10 +36,16 @@
         <a class="nav-link" href="{{url('/examens')}}">Examens</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{url('/exercises')}}">Exercices</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{url('/seances')}}">Seances</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{url('/notes')}}">Notes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/realisations')}}">Realisation</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{url('/absences')}}">Absences</a>

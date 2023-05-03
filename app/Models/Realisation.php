@@ -2,17 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\exercise;
+use App\Models\stagiaires;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Realisation extends Model
 {
-    protected $table="stagiaires";
-    protected $primaryKey = 'idstagiaire';
-    protected $fillable = ['idgroup', 'nom', 'prenom'];
+    protected $table="realisations";
+    protected $primaryKey = 'idrealisation';
+    protected $fillable = ['idrealisation', 'idexercice', 'idstagiaire', 'note'];
     use HasFactory;
-    function module(){
-        return $this->belongsTo(Module::class,'idmodule');
+
+    function exercices(){
+        return $this->belongsTo(exercise::class,'idexercice');
     }
+
+    function stagiairee(){
+        return $this->belongsTo(stagiaires::class, 'idstagiaire');
+    }
+    
+
 }
 

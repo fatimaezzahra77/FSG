@@ -15,17 +15,14 @@ return new class extends Migration
             $table->id('idexercice');
             $table->foreignId('idseance');
             $table->string('titre');
-            $table->text('contenu');
-            $table->text('solution');
+            $table->string('contenu');
+            $table->string('solution');
             $table->boolean('fait')->default(false); 
             $table->foreign('idseance')->references('idseance')->on('seances')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('exercices');

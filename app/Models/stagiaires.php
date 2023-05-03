@@ -4,10 +4,12 @@ namespace App\Models;
 
 use App\Models\Note;
 use App\Models\groupes;
+use App\Models\Realisation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class stagiaires extends Model
+
 {
     use HasFactory;
     protected $table="stagiaires";
@@ -19,6 +21,10 @@ class stagiaires extends Model
     }
     function note(){
         return $this->belongsTo(Note::class, 'idnote');
+    }
+
+    function realisations(){
+        return $this->hasMany(Realisation::class);
     }
 }
 
